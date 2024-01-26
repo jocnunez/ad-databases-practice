@@ -3,7 +3,10 @@
 ### Preparación
 
 -   Instalar Python en local para facilitar la depuración
--   Crear Volumenes en Docker para la Mongo-DB y la Maria DB
+-   Crear Volumen con Docker Compose para la MongoDB
+    -   Buscar en Docker Hub la imagen oficial de Mongo
+    -   En nuestro caso usaremos mongo:6.0.13-jammy
+    -   Expondremos el puerto por defecto de Mongo para poder acceder desde fuera del contenedor
 
 ### Ejercicios
 
