@@ -1,14 +1,16 @@
 from pymongo import MongoClient
-from flask import Flask
+from flask import Flask, request
 
-print('Hello World!')
+print("Hello World!")
 
-client = MongoClient("mongodb://root:example@localhost:27017")
-db = client.testdb
+# client = MongoClient("mongodb://root:example@localhost:27017")
+# db = client.testdb
 
-try: db.command("serverStatus")
-except Exception as e: print(e)
-else: print("You are connected!")
+# try: db.command("serverStatus")
+# except Exception as e: print(e)
+# else: print("You are connected!")
+
+# client.close()
 
 # TODO: Inicializar la base de Datos con lo necesario
 
@@ -21,4 +23,15 @@ app = Flask(__name__)
 def hello_world():
     return {"Hola": "Mundo"}
 
-client.close()
+# POST
+@app.route("/notes", methods=["POST"])
+def post():
+    request_data = request.json
+    # TODO: Validar el formato
+    # TODO: Insertar en la mongo
+    print("data: ", request_data)
+    return request_data
+
+# Levantar el servicio si se ejecuta en modo App
+if __name__ == "__main__":
+    app.run()
