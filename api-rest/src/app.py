@@ -1,9 +1,18 @@
 from pymongo import MongoClient
 from flask import Flask, request
+from dotenv import load_dotenv, dotenv_values
+
 
 print("Hello World!")
 
-# client = MongoClient("mongodb://root:example@localhost:27017")
+env = dotenv_values()
+user = env["USER"]
+password = env["PASSWORD"]
+host = env["HOST"]
+port = env["PORT"]
+print(user)
+
+ client = MongoClient(f"mongodb://{user}:{password}@{host}:{port}")
 # db = client.testdb
 
 # try: db.command("serverStatus")

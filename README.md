@@ -4,7 +4,7 @@
 
 ### Sprint: MongoDB RESTful y GraphQL
 
--   Configura la app para leer variables de entorno al inicio
+-   Configura la app para leer variables de entorno al inicio (librería dotenv)
 -   Diseña la app de forma modular
 -   Añade a la ruta raíz en formato HATEOAS la ruta del READ de las notas de la API REST
 -   Añade una variable de entorno que si está activa añada otra ruta más. La ruta devolverá:
