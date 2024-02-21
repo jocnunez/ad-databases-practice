@@ -10,6 +10,10 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: ${PASSWORD}
       MONGO_INITDB_DATABASE: ${DATABASE}
 
+  #mariadb:
+
+  #app: #python
+
 ## Comandos desde mongosh
 # test> use admin
 # switched to db admin

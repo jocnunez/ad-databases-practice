@@ -31,3 +31,8 @@ client.close()
 
 ## HTTP actions: GET, POST, PUT, DELETE
 # API REST: READ, CREATE, UPDATE, DELETE
+
+
+# Levantar el servicio si se ejecuta en modo App
+if __name__ == "__main__":
+    # levantarServicio()
