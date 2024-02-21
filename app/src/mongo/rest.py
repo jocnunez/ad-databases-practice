@@ -34,5 +34,5 @@ client.close()
 
 
 # Levantar el servicio si se ejecuta en modo App
-if __name__ == "__main__":
+#if __name__ == "__main__":
     # levantarServicio()
