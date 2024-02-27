@@ -1,31 +1,18 @@
-from dotenv import dotenv_values
-from flask import Flask, request
-from pymongo import MongoClient
+from flask import Blueprint, request
 
-env = dotenv_values()
+api_rest_bp = Blueprint('api_rest_bp', __name__)
 
-user = env["USER"]
-password = env["PASSWORD"]
-host = env["HOST"]
-port = env["PORT"]
+@api_rest_bp.route('/notes')
+def notes():
+    return { "notes": "ok" }
 
-client = MongoClient(f"mongodb://{user}:{password}@{host}:{port}")
-db = client.testdb
+# def post():
+#     request_data = request.json
+#     # TODO: Validar el formato
+#     # TODO: Insertar en la mongo
+#     print("data: ", request_data)
+#     return request_data
 
-try: db.command("serverStatus")
-except Exception as e: print(e)
-else: print("You are connected!")
-
-# POST
-@app.route("/notes", methods=["POST"])
-def post():
-    request_data = request.json
-    # TODO: Validar el formato
-    # TODO: Insertar en la mongo
-    print("data: ", request_data)
-    return request_data
-
-client.close()
 
 # TODO: Inicializar la base de Datos con lo necesario
 

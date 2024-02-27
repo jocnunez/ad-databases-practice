@@ -1,23 +1,35 @@
-from flask import Flask
 from dotenv import dotenv_values
+from flask import Flask
 
-MONGO_ROUTE = '/api/v1'
-MARIADB_ROUTE = '/api/v2'
-GRAPHQL_ROUTE = '/graphql'
+from mongo import rest
 
-env = dotenv_values()
+ROUTES = {
+    'MONGO': '/api/v1',
+    'MARIADB': '/api/v2',
+    'GRAPHQL': '/graphql'
+}
 
-# TODO: Rutas visibles según los Feature Toggles
+ENV = dotenv_values()
+
 app = Flask(__name__)
-@app.route('/')
-def loadRoutes():
-    routes = { 'mongo': MONGO_ROUTE }
-    if env['FT_GRAPHQL'] == 'true':
-        routes['graphql'] = GRAPHQL_ROUTE
-    if env['FT_API_SQL'] == 'true':
-        routes['mariadb'] = MARIADB_ROUTE
 
-    return routes
+def enableRoute(moduleName = ''):
+    if moduleName == 'MONGO':
+        app.register_blueprint(rest.api_rest_bp, url_prefix='/test')
+    print(moduleName)
+    return moduleName
+
+response = {}
+for key, value in ROUTES.items():
+    if ENV[key] == 'true':
+        response[key] = value
+        enableRoute(key)
+
+
+@app.route('/')
+def getRoutes():
+    return response
+
 
 # Levantar el servicio si se ejecuta en modo App
 if __name__ == "__main__":
