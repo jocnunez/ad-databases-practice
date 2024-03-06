@@ -1,7 +1,7 @@
 from dotenv import dotenv_values
 from flask import Flask
 
-from mongo import rest
+from interfaces import rest
 
 ROUTES = {
     'MONGO': '/api/v1',
