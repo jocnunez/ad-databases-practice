@@ -10,13 +10,19 @@
 - API RESTful (crud completo) en python, con el driver mariadb, sobre MariaDB
 - GraphQL que permita al menos las mismas operaciones que las APIs
 
+
 ### Los datos a guardar serán
 
 - n usuarios
   - usuario:
     - id: email (no permitiremos repetir email)
-    - pwd
+    - pwd: ...
+    - name: ...
 - n listas de tareas por cada usuario
+  - lista:
+    - id: uuid
+    - name: ...
+
   - tarea:
     - id: uuid
     - text: el texto de la tarea
